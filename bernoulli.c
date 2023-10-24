@@ -1,53 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void evalBernoulli(int n, int k, int q, int pUpper, int pLower);
+
 int main(int argc, char * argv[])
 {
-	int total, positiveInstances, negativeInstances, positiveOutcome, totalOutcome;
-	total = positiveInstances = negativeInstances = positiveOutcome = totalOutcome;
+	int n, k, q, pUpper, pLower;
+	n = k = q = pUpper = pLower = 0;
 
 	if (argc < 5) {
         printf("Usage: %s <total> <positiveInstances> <positiveOutcome> <totalOutcome>\n", argv[0]);
         return 1;
     }
 
-	total = atoi(argv[1]);
-	positiveInstances = atoi(argv[2]);
-	negativeInstances = total-positiveInstances;
-	positiveOutcome = atoi(argv[3]);
-	totalOutcome = atoi(argv[4]);
+	n = atoi(argv[1]);
+	k = atoi(argv[2]);
+	q = n-k;
+	pUpper = atoi(argv[3]);
+	pLower = atoi(argv[4]);
 	
-	/* if(totalOutcome == 0) */
-	/* 	return "arguments: total instances (1), positive instances (2), positive outcome/s (3), total possivle outcomes (4)"; */
+	evalBernoulli(n, k, q, pUpper, pLower);
 
-	printf("%d, %d, %d, %d, %d\n", total, positiveInstances, negativeInstances, positiveOutcome, totalOutcome); // added it for debug purposes
+	return 0;
+}
 
-	double combinations = total;
+void evalBernoulli(int n, int k, int q, int pUpper, int pLower)
+{
+	double combinations = n;
 	double combinations2 = 1;
 
 
-	double positive = (double)positiveOutcome/totalOutcome;
+	double positive = (double)pUpper/pLower;
 	double negative = 1 - positive;
-
-	double cSumTop = 1;
-	double cSumBottom = 1;
-
-	double positiveSum = 1;
-	double negativeSum = 1;
 	
-	for(int i = 0; i < positiveInstances; ++i)
+	double cSumTop, cSumBottom, positiveSum, negativeSum;
+	cSumTop = cSumBottom = positiveSum = negativeSum = 1;
+
+	for(int i = 0; i < k; ++i)
 	{
 		cSumTop *= (combinations - i);
 		cSumBottom *= (combinations2 + i);
 		positiveSum *= positive;
 	}
-	for(int i = 0; i < negativeInstances; ++i)
+
+	for(int i = 0; i < q; ++i)
 	{
 		negativeSum *= negative;
 	}
 
-	double result = (cSumTop/cSumBottom) * positiveSum * negativeSum * 100.0;
-	printf("%f%%\n", result);
-	
-	return 0;
+	double resultPercentage = (cSumTop/cSumBottom) * positiveSum * negativeSum * 100.0;
+	printf("%f%%\n", resultPercentage);
 }
