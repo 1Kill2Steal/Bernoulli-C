@@ -2,7 +2,7 @@ Using the Bernoulli Distribution this terminal app works by passing
 arguments for the total instance count, positive instances out of those
 total ones, positive variants, total variants.
 
-This is particularly useful for stuff like rolling 2 dices and wanting
+This is particularly useful for stuff like rolling a die and wanting
 to get a specific number for example:
 
 $ bernoulli 1 1 1 6 
