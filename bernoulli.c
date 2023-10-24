@@ -8,7 +8,8 @@ int main(int argc, char * argv[])
 	int n, k, q, pUpper, pLower;
 	n = k = q = pUpper = pLower = 0;
 
-	if (argc < 5) {
+	if (argc < 5)
+	{
         printf("Usage: %s <total> <positiveInstances> <positiveOutcome> <totalOutcome>\n", argv[0]);
         return 1;
     }
