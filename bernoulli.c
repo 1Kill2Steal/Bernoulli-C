@@ -12,7 +12,7 @@ int main(int argc, char * argv[])
 	{
         printf("Usage: %s <total> <positiveInstances> <positiveOutcome> <totalOutcome>\n", argv[0]);
         return 1;
-    }
+	}
 
 	n = atoi(argv[1]);
 	k = atoi(argv[2]);
