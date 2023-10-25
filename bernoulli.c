@@ -16,7 +16,6 @@ int main(int argc, char * argv[])
 
 	totalInstances = atoi(argv[1]);
 	positiveInstances = atoi(argv[2]);
-	negativeInstances = totalInstances-positiveInstances;
 	positiveVariations = atoi(argv[3]);
 	totalVariations = atoi(argv[4]);
 	
@@ -29,6 +28,8 @@ int main(int argc, char * argv[])
 
 double evalBernoulli(int totalInstances, int positiveInstances, int negativeInstances, int positiveVariations, int totalVariations)
 {
+	negativeInstances = totalInstances-positiveInstances;
+
 	double combinations = totalInstances;
 	double combinations2 = 1;
 
