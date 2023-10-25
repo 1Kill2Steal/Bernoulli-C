@@ -1,34 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double evalBernoulli(int totalInstances, int positiveInstances, int negativeInstances, int positiveVariations, int totalVariations);
+double evalBernoulli(int totalInstances, int positiveInstances, int positiveVariations, int totalVariations);
 
 int main(int argc, char * argv[])
 {
-	int totalInstances, positiveInstances, negativeInstances, positiveVariations, totalVariations;
-	totalInstances = positiveInstances = negativeInstances = positiveVariations = totalVariations = 0;
-
 	if (argc < 5)
 	{
         printf("Usage: %s <totalInstances> <positiveInstances> <negativeInstances> <positiveVariations> <totalVariations>\n", argv[0]);
         return 1;
 	}
 
-	totalInstances = atoi(argv[1]);
-	positiveInstances = atoi(argv[2]);
-	positiveVariations = atoi(argv[3]);
-	totalVariations = atoi(argv[4]);
+	int totalInstances = atoi(argv[1]);
+	int positiveInstances = atoi(argv[2]);
+	int positiveVariations = atoi(argv[3]);
+	int totalVariations = atoi(argv[4]);
 	
-	double result = evalBernoulli(totalInstances, positiveInstances, negativeInstances, positiveVariations, totalVariations);
+	double result = evalBernoulli(totalInstances, positiveInstances, positiveVariations, totalVariations);
 
 	printf("%f%%\n", result * 100.0);
 
 	return 0;
 }
 
-double evalBernoulli(int totalInstances, int positiveInstances, int negativeInstances, int positiveVariations, int totalVariations)
+double evalBernoulli(int totalInstances, int positiveInstances, int positiveVariations, int totalVariations)
 {
-	negativeInstances = totalInstances-positiveInstances;
+	int negativeInstances = totalInstances-positiveInstances;
 
 	double combinations = totalInstances;
 	double combinations2 = 1;
