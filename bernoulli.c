@@ -16,12 +16,14 @@ int main(int argc, char * argv[])
 	int positiveVariations = atoi(argv[3]);
 	int totalVariations = atoi(argv[4]);
 	
-    if (totalInstances <= 0 || positiveInstances <= 0 || positiveVariations <= 0 || totalVariations <= 0) {
+	if (totalInstances <= 0 || positiveInstances <= 0 || positiveVariations <= 0 || totalVariations <= 0)
+	{
         printf("All values must be greater than zero and integers.");
         return 1;
     }
 
-    if (totalInstances < positiveInstances) {
+	if (totalInstances < positiveInstances)
+	{
         printf("totalInstances must be greater than positiveInstances");
         return 1;
     }
