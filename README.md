@@ -1,4 +1,4 @@
-Using the Bernoulli distribution this terminal app works by passing
+Using the Bernoulli distribution, this terminal app works by passing
 arguments for the total instance count, positive instances out of those
 total ones, positive variants, total variants.
 
