@@ -18,14 +18,14 @@ int main(int argc, char * argv[])
 	
 	if (totalInstances <= 0 || positiveInstances <= 0 || positiveVariations <= 0 || totalVariations <= 0)
 	{
-        printf("All values must be greater than zero and integers.");
-        return 1;
+		printf("All values must be greater than zero and integers.");
+		return 1;
 	}
 
 	if (totalInstances < positiveInstances)
 	{
-        printf("totalInstances must be greater than positiveInstances");
-        return 1;
+		printf("totalInstances must be greater than positiveInstances");
+		return 1;
 	}
 
 	double result = evalBernoulli(totalInstances, positiveInstances, positiveVariations, totalVariations);
