@@ -1,54 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void evalBernoulli(int n, int k, int q, int pUpper, int pLower);
+double evalBernoulli(int totalInstances, int positiveInstances, int negativeInstances, int positiveVariations, int totalVariations);
 
 int main(int argc, char * argv[])
 {
-	int n, k, q, pUpper, pLower;
-	n = k = q = pUpper = pLower = 0;
+	int totalInstances, positiveInstances, negativeInstances, positiveVariations, totalVariations;
+	totalInstances = positiveInstances = negativeInstances = positiveVariations = totalVariations = 0;
 
 	if (argc < 5)
 	{
-        printf("Usage: %s <total> <positiveInstances> <positiveOutcome> <totalOutcome>\n", argv[0]);
+        printf("Usage: %s <totalInstances> <positiveInstances> <negativeInstances> <positiveVariations> <totalVariations>\n", argv[0]);
         return 1;
 	}
 
-	n = atoi(argv[1]);
-	k = atoi(argv[2]);
-	q = n-k;
-	pUpper = atoi(argv[3]);
-	pLower = atoi(argv[4]);
+	totalInstances = atoi(argv[1]);
+	positiveInstances = atoi(argv[2]);
+	negativeInstances = totalInstances-positiveInstances;
+	positiveVariations = atoi(argv[3]);
+	totalVariations = atoi(argv[4]);
 	
-	evalBernoulli(n, k, q, pUpper, pLower);
+	double result = evalBernoulli(totalInstances, positiveInstances, negativeInstances, positiveVariations, totalVariations);
+
+	printf("%f%%\n", result * 100.0);
 
 	return 0;
 }
 
-void evalBernoulli(int n, int k, int q, int pUpper, int pLower)
+double evalBernoulli(int totalInstances, int positiveInstances, int negativeInstances, int positiveVariations, int totalVariations)
 {
-	double combinations = n;
+	double combinations = totalInstances;
 	double combinations2 = 1;
 
 
-	double positive = (double)pUpper/pLower;
+	double positive = (double)positiveVariations/totalVariations;
 	double negative = 1 - positive;
 	
 	double cSumTop, cSumBottom, positiveSum, negativeSum;
 	cSumTop = cSumBottom = positiveSum = negativeSum = 1;
 
-	for(int i = 0; i < k; ++i)
+	for(int i = 0; i < positiveInstances; ++i)
 	{
 		cSumTop *= (combinations - i);
 		cSumBottom *= (combinations2 + i);
 		positiveSum *= positive;
 	}
 
-	for(int i = 0; i < q; ++i)
+	for(int i = 0; i < negativeInstances; ++i)
 	{
 		negativeSum *= negative;
 	}
 
-	double resultPercentage = (cSumTop/cSumBottom) * positiveSum * negativeSum * 100.0;
-	printf("%f%%\n", resultPercentage);
+	return (cSumTop/cSumBottom) * positiveSum * negativeSum;
 }
