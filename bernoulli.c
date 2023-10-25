@@ -21,7 +21,7 @@ int main(int argc, char * argv[])
         return 1;
     }
 
-    if (totalInstances < positiveInstances) {
+    if (totalInstances < positiveInstances-1) {
         printf("totalInstances must be greater than positiveInstances");
         return 1;
     }
