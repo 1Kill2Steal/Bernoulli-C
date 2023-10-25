@@ -30,7 +30,7 @@ int main(int argc, char * argv[])
 
 	double result = evalBernoulli(totalInstances, positiveInstances, positiveVariations, totalVariations);
 
-	printf("%f%%\n", result * 100.0);
+	printf("%f%%", result * 100.0);
 
 	return 0;
 }
